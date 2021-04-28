@@ -1,0 +1,28 @@
+{
+  "name": "eng-zap-challenge-nodejs",
+  "version": "1.0.0",
+  "description": "Code Challenge Grupo ZAP",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victormagalhaess/eng-zap-challenge-nodejs.git"
+  },
+  "author": "Victor Hugo Faria Dias Magalhães",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victormagalhaess/eng-zap-challenge-nodejs/issues"
+  },
+  "homepage": "https://github.com/victormagalhaess/eng-zap-challenge-nodejs#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
