@@ -1,5 +1,6 @@
 import express from "express";
-import realtySingleton from "../Services/realtySingleton.js";
+import * as vivaRealController from "../Controllers/vivarealController.js";
+import * as zapController from "../Controllers/zapController.js";
 
 const routes = express.Router();
 
@@ -8,8 +9,7 @@ const routes = express.Router();
 // @access Public
 routes.get("/zap", async (req, res) => {
   try {
-    res.status(200).send(realtySingleton.realties);
-    //await zapController.getZapRealties(req, res);
+    await zapController.getZapRealties(req, res);
   } catch (err) {
     console.log(`An error ocurring fetching the realties: ${err}`);
   }
