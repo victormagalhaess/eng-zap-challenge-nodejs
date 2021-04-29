@@ -6,10 +6,10 @@ export const checkCommonRealtyValidity = (usableAreas, lon, lat) => {
 
 export const isRealtyInsideZapBoundingBox = (lon, lat) => {
   return (
-    lat < constants.boundingBox.maxlat &&
-    lat > constants.boundingBox.minlat &&
-    lon < constants.boundingBox.maxlon &&
-    lon > constants.boundingBox.minlon
+    lat <= constants.boundingBox.maxlat &&
+    lat >= constants.boundingBox.minlat &&
+    lon <= constants.boundingBox.maxlon &&
+    lon >= constants.boundingBox.minlon
   );
 };
 
