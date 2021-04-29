@@ -2,30 +2,37 @@ import realtySingleton from "./realtySingleton.js";
 import * as utils from "../Utils/index.js";
 import constants from "../Constants/index.js";
 
-export const findAllZapRealties = () => {
+export const findAllZapRealties = (page, pageSize) => {
   const realties = realtySingleton.realties;
   const zapRealties = realties.filter((realty) => {
     return validateAllZapRequesites(realty);
   });
-  return zapRealties;
+  const paginatedResult = utils.paginate(zapRealties, page, pageSize);
+  return paginatedResult;
 };
 
 const validateAllZapRequesites = (realty) => {
-  const lat = realty.address.geoLocation.location.lon;
-  const lon = realty.address.geoLocation.location.lon;
-  const usableAreas = realty.usableAreas;
-  const price = realty.pricingInfos.price;
-  const businessType = realty.pricingInfos.businessType;
+  try {
+    const lat = realty.address.geoLocation.location.lon;
+    const lon = realty.address.geoLocation.location.lon;
+    const usableAreas = realty.usableAreas;
+    const price = realty.pricingInfos.price;
+    const businessType = realty.pricingInfos.businessType;
 
-  let passedOnTypeCheck = true;
+    let passedOnTypeCheck = true;
 
-  if (businessType === "RENTAL") {
-    passedOnTypeCheck = checkZapRentRequesites(price);
-  } else if (businessType === "SALE") {
-    passedOnTypeCheck = checkZapSaleRequesites(usableAreas, price, lat, lon);
+    if (businessType === "RENTAL") {
+      passedOnTypeCheck = checkZapRentRequesites(price);
+    } else if (businessType === "SALE") {
+      passedOnTypeCheck = checkZapSaleRequesites(usableAreas, price, lat, lon);
+    }
+
+    return utils.checkCommonRealtyValidity(usableAreas, lat, lon) && passedOnTypeCheck;
+  } catch (err) {
+    const errorMessage = `An error ocurred searching the required data: ${err}`;
+    console.log(errorMessage);
+    throw errorMessage;
   }
-
-  return utils.checkCommonRealtyValidity(usableAreas, lat, lon) && passedOnTypeCheck;
 };
 
 const checkZapSaleRequesites = (usableAreas, price, lat, lon) => {

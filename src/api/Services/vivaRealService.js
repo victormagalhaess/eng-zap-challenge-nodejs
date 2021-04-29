@@ -7,26 +7,33 @@ export const findAllVivaRealRealties = (page, pageSize) => {
   const vivaRealRealties = realties.filter((realty) => {
     return validateAllVivaRealRequesites(realty);
   });
-  return vivaRealRealties;
+  const paginatedResult = utils.paginate(vivaRealRealties, page, pageSize);
+  return paginatedResult;
 };
 
 const validateAllVivaRealRequesites = (realty) => {
-  const lat = realty.address.geoLocation.location.lon;
-  const lon = realty.address.geoLocation.location.lon;
-  const usableAreas = realty.usableAreas;
-  const monthlyCondoFee = realty.pricingInfos.monthlyCondoFee;
-  const price = realty.pricingInfos.price;
-  const businessType = realty.pricingInfos.businessType;
+  try {
+    const lat = realty.address.geoLocation.location.lon;
+    const lon = realty.address.geoLocation.location.lon;
+    const usableAreas = realty.usableAreas;
+    const monthlyCondoFee = realty.pricingInfos.monthlyCondoFee;
+    const price = realty.pricingInfos.price;
+    const businessType = realty.pricingInfos.businessType;
 
-  let passedOnTypeCheck = true;
+    let passedOnTypeCheck = true;
 
-  if (businessType === "RENTAL") {
-    passedOnTypeCheck = checkVivaRealRentRequesites(price, monthlyCondoFee, lon, lat);
-  } else if (businessType === "SALE") {
-    passedOnTypeCheck = checkVivaRealSaleRequesites(price);
+    if (businessType === "RENTAL") {
+      passedOnTypeCheck = checkVivaRealRentRequesites(price, monthlyCondoFee, lon, lat);
+    } else if (businessType === "SALE") {
+      passedOnTypeCheck = checkVivaRealSaleRequesites(price);
+    }
+
+    return utils.checkCommonRealtyValidity(usableAreas, lat, lon) && passedOnTypeCheck;
+  } catch (err) {
+    const errorMessage = `An error ocurred searching the required data: ${err}`;
+    console.log(errorMessage);
+    throw errorMessage;
   }
-
-  return utils.checkCommonRealtyValidity(usableAreas, lat, lon) && passedOnTypeCheck;
 };
 
 const checkVivaRealSaleRequesites = (price) => {
