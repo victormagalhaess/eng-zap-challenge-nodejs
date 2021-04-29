@@ -1,3 +1,6 @@
+import * as vivaRealService from "../Services/vivaRealService.js";
+
 export const getvivaRealRealties = async (req, res) => {
-  res.status(200).send("NOT IMPLEMENTED VIVA REAL");
+  const data = vivaRealService.findAllVivaRealRealties();
+  res.status(200).send(data);
 };
