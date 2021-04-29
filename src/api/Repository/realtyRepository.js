@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import config from "../Config/index.js";
+import config from "../Config/config.js";
 
 const findAllRealties = async () => {
   try {

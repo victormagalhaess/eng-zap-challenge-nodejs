@@ -2,7 +2,7 @@ import express from "express";
 
 import * as vivaRealController from "../Controllers/vivarealController.js";
 import * as zapController from "../Controllers/zapController.js";
-import * as middlewares from "../Middlewares/index.js";
+import * as middlewares from "../Middlewares/middlewares.js";
 
 const routes = express.Router();
 

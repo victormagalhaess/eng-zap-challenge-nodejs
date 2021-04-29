@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 
 import realtySingleton from "./api/Services/realtySingleton.js";
-import config from "./api/Config/index.js";
-import routes from "./api/Routes/index.js";
+import config from "./api/Config/config.js";
+import routes from "./api/Routes/routes.js";
 
 const app = express();
 

@@ -1,4 +1,4 @@
-import constants from "../Constants/index.js";
+import constants from "../Constants/constants.js";
 
 export const checkCommonRealtyValidity = (usableAreas, lon, lat) => {
   return usableAreas != 0 && lon != 0 && lat != 0;

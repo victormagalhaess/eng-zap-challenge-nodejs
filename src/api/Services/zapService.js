@@ -1,6 +1,6 @@
 import realtySingleton from "./realtySingleton.js";
-import * as utils from "../Utils/index.js";
-import constants from "../Constants/index.js";
+import * as utils from "../Utils/utils.js";
+import constants from "../Constants/constants.js";
 
 export const findAllZapRealties = (page, pageSize) => {
   const realties = realtySingleton.realties;
