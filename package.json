@@ -1,0 +1,46 @@
+{
+  "name": "eng-zap-challenge-nodejs",
+  "version": "1.0.0",
+  "description": "Code Challenge Grupo ZAP",
+  "main": "index.js",
+  "type": "module",
+  "jest": {
+    "collectCoverageFrom": [
+      "**/api/**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/Config/**",
+      "!**/Constants/**",
+      "!**/Middlewares/**",
+      "!**/Routes/**"
+    ]
+  },
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victormagalhaess/eng-zap-challenge-nodejs.git"
+  },
+  "author": "Victor Hugo Faria Dias Magalhães",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victormagalhaess/eng-zap-challenge-nodejs/issues"
+  },
+  "homepage": "https://github.com/victormagalhaess/eng-zap-challenge-nodejs#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.10.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.14.0",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3"
+  }
+}
