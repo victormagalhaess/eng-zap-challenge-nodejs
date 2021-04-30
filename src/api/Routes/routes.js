@@ -1,6 +1,6 @@
 import express from "express";
 
-import * as vivaRealController from "../Controllers/vivarealController.js";
+import * as vivaRealController from "../Controllers/vivaRealController.js";
 import * as zapController from "../Controllers/zapController.js";
 import * as middlewares from "../Middlewares/middlewares.js";
 import expressValidator from "express-validator";
