@@ -3,6 +3,8 @@ import express from "express";
 import * as vivaRealController from "../Controllers/vivarealController.js";
 import * as zapController from "../Controllers/zapController.js";
 import * as middlewares from "../Middlewares/middlewares.js";
+import expressValidator from "express-validator";
+const { validationResult } = expressValidator;
 
 const routes = express.Router();
 
@@ -11,7 +13,7 @@ const routes = express.Router();
 // @access Public
 routes.get("/zap", middlewares.validateQueryParams, async (req, res) => {
   try {
-    await zapController.getZapRealties(req, res);
+    await zapController.getZapRealties(req, res, validationResult);
   } catch (err) {
     console.log(`An error ocurring fetching the realties: ${err}`);
   }
@@ -22,7 +24,7 @@ routes.get("/zap", middlewares.validateQueryParams, async (req, res) => {
 // @access Public
 routes.get("/vivareal", middlewares.validateQueryParams, async (req, res) => {
   try {
-    await vivaRealController.getvivaRealRealties(req, res);
+    await vivaRealController.getvivaRealRealties(req, res, validationResult);
   } catch (err) {
     console.log(`An error ocurred fetching the realties: ${err}`);
   }

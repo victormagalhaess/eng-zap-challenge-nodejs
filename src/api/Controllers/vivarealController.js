@@ -1,8 +1,6 @@
 import * as vivaRealService from "../Services/vivaRealService.js";
-import expressValidator from "express-validator";
-const { validationResult } = expressValidator;
 
-export const getvivaRealRealties = async (req, res) => {
+export const getvivaRealRealties = async (req, res, validationResult) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

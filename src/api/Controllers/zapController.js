@@ -1,8 +1,6 @@
 import * as zapService from "../Services/zapService.js";
-import expressValidator from "express-validator";
-const { validationResult } = expressValidator;
 
-export const getZapRealties = async (req, res) => {
+export const getZapRealties = async (req, res, validationResult) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
