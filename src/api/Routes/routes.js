@@ -37,6 +37,7 @@ routes.get("/healthcheck", async (req, res) => {
   try {
     res.status(200).send("Ok");
   } catch (err) {
+    res.status(500).send("Internal server error.");
     console.log(`An error ocurred verifying the healthcheck: ${err}`);
   }
 });
