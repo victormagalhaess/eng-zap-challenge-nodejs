@@ -11,7 +11,7 @@ export const findAllZapRealties = (page, pageSize) => {
   return paginatedResult;
 };
 
-const validateAllZapRequesites = (realty) => {
+export const validateAllZapRequesites = (realty) => {
   try {
     const lat = realty.address.geoLocation.location.lon;
     const lon = realty.address.geoLocation.location.lon;
@@ -35,7 +35,7 @@ const validateAllZapRequesites = (realty) => {
   }
 };
 
-const checkZapSaleRequesites = (usableAreas, price, lat, lon) => {
+export const checkZapSaleRequesites = (usableAreas, price, lat, lon) => {
   let usableAreaCheck = true;
   if (utils.isRealtyInsideZapBoundingBox(lon, lat)) {
     usableAreaCheck = usableAreas > constants.zap.minUsableAreas * 0.9;
@@ -45,6 +45,6 @@ const checkZapSaleRequesites = (usableAreas, price, lat, lon) => {
   return price >= constants.zap.minSale && usableAreaCheck;
 };
 
-const checkZapRentRequesites = (price) => {
+export const checkZapRentRequesites = (price) => {
   return price >= constants.zap.minRent;
 };

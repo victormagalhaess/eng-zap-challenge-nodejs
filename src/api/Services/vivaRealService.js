@@ -11,7 +11,7 @@ export const findAllVivaRealRealties = (page, pageSize) => {
   return paginatedResult;
 };
 
-const validateAllVivaRealRequesites = (realty) => {
+export const validateAllVivaRealRequesites = (realty) => {
   try {
     const lat = realty.address.geoLocation.location.lon;
     const lon = realty.address.geoLocation.location.lon;
@@ -36,16 +36,16 @@ const validateAllVivaRealRequesites = (realty) => {
   }
 };
 
-const checkVivaRealSaleRequesites = (price) => {
+export const checkVivaRealSaleRequesites = (price) => {
   return price <= constants.vivaReal.maxSale;
 };
 
-const checkVivaRealRentRequesites = (price, monthlyCondoFee, lon, lat) => {
+export const checkVivaRealRentRequesites = (price, monthlyCondoFee, lon, lat) => {
   let condoFeePercentageCheck = true;
   if (utils.isRealtyInsideZapBoundingBox(lon, lat)) {
     condoFeePercentageCheck = monthlyCondoFee < 0.5 * price;
   } else {
-    condoFeePercentageCheck = monthlyCondoFee > 0.3 * price;
+    condoFeePercentageCheck = monthlyCondoFee < 0.3 * price;
   }
   return price <= constants.vivaReal.maxRent && condoFeePercentageCheck;
 };
