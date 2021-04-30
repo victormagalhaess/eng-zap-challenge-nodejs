@@ -8,6 +8,7 @@ const findAllRealties = async () => {
     return res.data;
   } catch (err) {
     console.log(`Error fetching the list of realties: ${err}`);
+    throw `Error fetching the list of realties: ${err}`;
   }
 };
 
