@@ -63,6 +63,7 @@ Tendo em vista que o container instala apenas as dependências de produção, n�
 ## Deploy
 
 Um arquivo docker-compose foi adicionado para orquestrar a criação e execução do container da API. A fim de realizar o deploy da API, utilize o próprio docker-compose ou qualquer outra ferramenta de orquestramento para iniciar o container e publique-o em qualquer provedor de cloud. <br/>
+Uma instância da API foi publicada em cloud e está disponível no seguinte endpoint: <br/> <a href="https://eng-zap-node-victor.herokuapp.com/api/v1/" target="_blank">https://eng-zap-node-victor.herokuapp.com/api/v1/</a> , consulte a seção [Estrutura da api](#estrutura-da-api) para poder fazer requisições.
 <br/>
 
 ## Estrutura da API
