@@ -1,4 +1,5 @@
 import * as utils from "../utils.js";
+import utilsMock from "./mocks/utils.mock.js";
 
 describe("Testing utils", () => {
   describe("Testing checkCommonRealtyValidity", () => {
@@ -55,6 +56,19 @@ describe("Testing utils", () => {
       [...Array(expectedArrays.length).keys()].forEach((index) => {
         expect(expectedArrays[index]).toEqual(resultArray[index]);
       });
+    });
+  });
+
+  describe("Testing assembleResponse", () => {
+    it("Should mount the response object correctly", () => {
+      const pageNumber = 1;
+      const pageSize = 16;
+      const totalCount = 178;
+      const listings = [1, 2, 3];
+      const expectedResult = { pageNumber, pageSize, totalCount, listings };
+
+      const result = utils.assembleResponse(pageNumber, pageSize, totalCount, listings);
+      expect(result).toEqual(expectedResult);
     });
   });
 });

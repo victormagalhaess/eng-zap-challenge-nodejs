@@ -8,7 +8,13 @@ export const findAllVivaRealRealties = (page, pageSize) => {
     return validateAllVivaRealRequesites(realty);
   });
   const paginatedResult = utils.paginate(vivaRealRealties, page, pageSize);
-  return paginatedResult;
+  const assembledResponse = utils.assembleResponse(
+    page,
+    pageSize,
+    vivaRealRealties.length,
+    paginatedResult
+  );
+  return assembledResponse;
 };
 
 export const validateAllVivaRealRequesites = (realty) => {

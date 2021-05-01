@@ -8,7 +8,13 @@ export const findAllZapRealties = (page, pageSize) => {
     return validateAllZapRequesites(realty);
   });
   const paginatedResult = utils.paginate(zapRealties, page, pageSize);
-  return paginatedResult;
+  const assembledResponse = utils.assembleResponse(
+    page,
+    pageSize,
+    zapRealties.length,
+    paginatedResult
+  );
+  return assembledResponse;
 };
 
 export const validateAllZapRequesites = (realty) => {
