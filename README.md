@@ -85,7 +85,7 @@ Rota de obtenção dos imóveis elegíveis para a plataforma zap.
 
 - Necessita dos queryParams: `page: Int > 0` e `pageSize: Int > 0`
 - Em caso de sucesso o retorno será:
-  - **200:** uma lista paginada a partir de page e pageSize dos imóveis eletivos para o portal Zap;
+  - **200:** metadados da requisição e uma lista paginada a partir de page e pageSize dos imóveis eletivos para o portal Zap;
     - Ex: `get http://localhost:4000/api/v1/zap?page=1&pageSize=1`
 - Em caso de falha o retorno será:
   - **400:** "Bad Request", acontece quando 'page' e 'pageSize' não foram passados corretamente
@@ -98,7 +98,7 @@ Rota de obtenção dos imóveis elegíveis para a plataforma Viva Real.
 
 - Necessita dos queryParams: `page: Int > 0` e `pageSize: Int > 0`
 - Em caso de sucesso o retorno será:
-  - **200:** uma lista paginada a partir de page e pageSize dos imóveis eletivos para o portal Viva Real;
+  - **200:** metadados da requisição e uma lista paginada a partir de page e pageSize dos imóveis eletivos para o portal Viva Real;
     - Ex: `get http://localhost:4000/api/v1/vivareal?page=1&pageSize=1`
 - Em caso de falha o retorno será:
   - **400:** "Bad Request", acontece quando 'page' e 'pageSize' não foram passados corretamente
@@ -117,13 +117,13 @@ Segue um diagrama representando cada camada, como se comunicam e suas responsabi
 
 ### Considerações sobre a implementação:
 
-- Dada a natureza da aplicação de não utilizar um banco de dados, foi necessário escolher uma abordagem para o armazenamento. Como obter todos os dados a cada requisição tornaria o processo muito lento, optou-se por carregar os dados em memória no início da aplicação, utilizando um *service* para um *singleton*. Uma instância da classe do singleton é exportada, permitindo que os dados sejam carregados quando a API inicia, e possam ser reutilizados sem chamadas adicionais a qualquer momento.
-- Foram criados testes unitários para boa parte da aplicação, o framework utilizado para *mock* e asserções foi o **jest**.
-- A fim de adicionar uma etapa de validação e sanitização dos dados, foram utilizados *middlewares* com checagem no *controller*, que permitem a avaliação e envio das respostas adequadas à entrada. <br/>
+- Dada a natureza da aplicação de não utilizar um banco de dados, foi necessário escolher uma abordagem para o armazenamento. Como obter todos os dados a cada requisição tornaria o processo muito lento, optou-se por carregar os dados em memória no início da aplicação, utilizando um _service_ para um _singleton_. Uma instância da classe do singleton é exportada, permitindo que os dados sejam carregados quando a API inicia, e possam ser reutilizados sem chamadas adicionais a qualquer momento.
+- Foram criados testes unitários para boa parte da aplicação, o framework utilizado para _mock_ e asserções foi o **jest**.
+- A fim de adicionar uma etapa de validação e sanitização dos dados, foram utilizados _middlewares_ com checagem no _controller_, que permitem a avaliação e envio das respostas adequadas à entrada. <br/>
   <br/>
 
 ## Possíveis melhorias
 
-Tendo em vista a natureza da aplicação, o uso de banco de dados não era permitido, porém futuramente, o uso de um banco de dados permitiria uma otimização maior do código, desacoplamento maior da camada de *service* e camada de *repository*, o que excluiria a necessidade de um *singleton* para armazenar os dados permitindo o uso de uma ORM para desacoplar a aplicação do próprio banco de dados.<br/>
+Tendo em vista a natureza da aplicação, o uso de banco de dados não era permitido, porém futuramente, o uso de um banco de dados permitiria uma otimização maior do código, desacoplamento maior da camada de _service_ e camada de _repository_, o que excluiria a necessidade de um _singleton_ para armazenar os dados permitindo o uso de uma ORM para desacoplar a aplicação do próprio banco de dados.<br/>
 Outra potencial melhoria seria a migração da API para Typescript. O Typescript permite validações de tipagem robustas, implementação de padrões de POO de forma elegante. Além disso, a linguagem ainda pode ser transpilada para javascript, mantendo a fácil implementação e deploy da API.<br/>
 A documentação da API foi feita de forma manual e gerada pelo Insomnia. Futuramente, alguma ferramenta de documentação automática, como o SwaggerUI, poderia ser adicionado ao projeto para facilitar a manutenibilidade da documentação.
