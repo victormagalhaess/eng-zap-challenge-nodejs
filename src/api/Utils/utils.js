@@ -16,3 +16,13 @@ export const isRealtyInsideZapBoundingBox = (lon, lat) => {
 export const paginate = (filteredRealty, page, pageSize) => {
   return filteredRealty.slice((page - 1) * pageSize, page * pageSize);
 };
+
+export const assembleResponse = (page, pageSize, totalCount, listings) => {
+  const response = {
+    pageNumber: page,
+    pageSize: pageSize,
+    totalCount: totalCount,
+    listings: listings,
+  };
+  return response;
+};
